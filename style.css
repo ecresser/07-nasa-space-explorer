@@ -1,144 +1,189 @@
-/* Global reset & box sizing */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* Base page styles */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f1f1f1;
-  padding: 20px;
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: center;
+  padding: 1rem;
+  background-color: #061f4a;
+  color: #fff;
 }
 
-/* Centered container */
 .container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
-/* Header */
-.site-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
-}
-
-h1 {
-  font-family: Verdana, sans-serif;
-  font-weight: bold;
-  color: #212121;
-}
-
-/* Logo */
-.logo {
-  width: 140px;
-  margin-right: 15px;
-}
-
-/* Date‐picker & button row */
-.filters {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 20px;
-  padding: 0 20px;
-}
-
-/* Inputs and buttons */
-input[type="date"],
-button {
-  font-family: Arial, sans-serif;
-  font-weight: normal;
-  color: #666;
-  padding: 10px 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-  line-height: 1.4;
-  width: 100%;
-}
-
-/* Button specific */
-button {
-  background-color: #d3d3d3;
-  color: black;
-  cursor: pointer;
-}
-button:hover {
-  background-color: #bfbfbf;
-}
-
-/* Stack horizontally on wider screens */
-@media (min-width: 600px) {
-  .filters {
-    flex-direction: row;
-    padding: 0;
-  }
-  
-  input[type="date"],
-  button {
-    width: auto;
-  }
-}
-
-/* Gallery flex container */
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px;
   justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
-/* Gallery items */
-.gallery-item {
-  flex: 1 1 100%;  /* full width by default */
-  min-width: 280px;
-  max-width: 500px;
-  background: white;
-  padding: 10px;
+.card {
+  width: 300px;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  color: #222;
 }
 
-/* Three columns on wider screens */
-@media (min-width: 1000px) {
-  .gallery-item {
-    flex: 0 1 31%;
+.card:hover {
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18);
+  transform: translateY(-4px) scale(1.03);
+  transition: box-shadow 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+
+.card img {
+  width: 100%; /* Make image fill the card width */
+  height: 200px; /* Set a fixed height for all images */
+  object-fit: cover; /* Crop images to fill the area without distortion */
+  border-radius: 6px;
+  transition: transform 0.3s cubic-bezier(0.4,0.2,0.2,1);
+}
+
+.card:hover img {
+  transform: scale(1.07);
+}
+
+/* Make card text white except for .card (which stays dark for contrast) */
+.card h3, .card p, .card strong {
+  color: #222;
+}
+
+.site-header {
+  margin-bottom: 2rem;
+}
+
+.site-header h1 {
+  font-size: 1.5rem; /* Make the NASA title smaller */
+  margin: 0.5rem 0 0 0;
+}
+
+.logo {
+  width: 180px; /* Make the NASA worm logo smaller */
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Modal styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal-content {
+  background: #fff;
+  padding: 2.5rem 1.5rem 1.5rem 1.5rem; /* Extra top padding for close button and image */
+  border-radius: 10px;
+  max-width: 500px;
+  width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  text-align: left;
+  position: relative;
+  color: #222;
+}
+.modal-content img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 18px;
+  font-size: 2rem;
+  color: #c00;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.filters input[type="date"] {
+  background-color: #dce4ef;
+  color: #222;
+  border: 1px solid #888;
+  border-radius: 4px;
+  padding: 0.3rem 0.5rem;
+  font-size: 1rem;
+  margin: 0 0.2rem;
+}
+
+.placeholder p {
+  color: #dce4ef;
+}
+
+.site-footer {
+  margin-top: 2rem;
+  padding: 1rem 0 0 0;
+  text-align: center;
+}
+.nasa-insignia {
+  width: 100px;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  background: #fff;
+}
+
+.space-fact {
+  background: rgba(255,255,255,0.08);
+  color: #dce4ef;
+  font-size: 1.1rem;
+  font-style: italic;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem auto 0 auto;
+  max-width: 600px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 700px) {
+  .card {
+    width: 95vw;
+    max-width: 340px;
+  }
+  .gallery {
+    gap: 0.5rem;
+  }
+  .modal-content {
+    max-width: 98vw;
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+  }
+  .site-header h1 {
+    font-size: 1.1rem;
+  }
+  .logo {
+    width: 120px;
+  }
+  .space-fact {
+    font-size: 1rem;
+    padding: 0.7rem 0.5rem;
   }
 }
 
-.gallery-item img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-.gallery-item p {
-  margin-top: 10px;
-  padding: 5px;
-  font-size: 14px;
-}
-
-/* Placeholder content */
-.placeholder {
-  flex: 1 1 100%;
-  text-align: center;
-  padding: 40px;
-  color: #666;
-}
-
-.placeholder-icon {
-  font-size: 48px;
-  margin-bottom: 20px;
+@media (max-width: 400px) {
+  .card {
+    width: 99vw;
+    max-width: 99vw;
+    padding: 0.2rem;
+  }
+  .modal-content {
+    padding: 0.5rem 0.1rem 0.5rem 0.1rem;
+  }
 }
